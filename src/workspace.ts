@@ -826,6 +826,7 @@ export class Workspace implements IWorkspace {
         let col = byteLength(line.slice(0, position.character)) + 1
         nvim.call('cursor', [position.line + 1, col], true)
       }
+      nvim.input("zz")
       if (this.isVim) nvim.command('redraw', true)
       await nvim.resumeNotification()
     } else {
@@ -840,6 +841,7 @@ export class Workspace implements IWorkspace {
         }
         await this.nvim.call('coc#util#jump', [jumpCommand, uri, pos])
       }
+      nvim.input("zz")
     }
   }
 
